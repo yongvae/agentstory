@@ -1,0 +1,10 @@
+# A fictional chat bridge, to test the configurable transcript rules.
+[transcript]
+drop_tags = ["router_*"]
+message_tags = ["chat_message"]
+speaker_tag = "from"
+relay_commands = ["chatctl send"]
+silent_replies = ["NO_REPLY"]
+
+[handoff.actions]
+message = '(\bchatctl\s+send\b[^\n;&|]{0,120})'

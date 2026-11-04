@@ -1,0 +1,46 @@
+[package]
+name = "agentstory"
+version = "0.5.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Lightweight agent-memory search in Rust: index, search and hand off sessions across Claude Code, Codex, Cursor, Gemini, Qwen, OpenCode and Hermes, plus a shared memory, wiki and mistakes log"
+license = "MIT"
+repository = "https://github.com/yongvae/agentstory"
+readme = "README.md"
+keywords = ["agents", "memory", "claude-code", "codex", "mcp"]
+categories = ["command-line-utilities", "development-tools"]
+exclude = ["tests/fixtures/**"]
+
+[lib]
+name = "agentstory"
+path = "src/lib.rs"
+
+[[bin]]
+name = "agentstory"
+path = "src/main.rs"
+
+[profile.release]
+lto = "thin"
+strip = true
+
+[dependencies]
+anyhow = "1.0.104"
+chrono = { version = "0.4.45", features = ["clock"] }
+clap = { version = "4.6.7", features = ["derive"] }
+dirs = "7.0.0"
+libc = "0.2.191"
+regex = "1.13.1"
+rusqlite = { version = "0.41.1", features = ["bundled"] }
+ruzstd = "0.8.2"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+toml = { version = "1.2.0", default-features = false, features = ["parse", "serde"] }
+walkdir = "2.5.0"
+
+[dev-dependencies]
+assert_cmd = "2.2.2"
+predicates = "3.1.4"
+rusqlite = "0.41.1"
+serde_json = "1.0.154"
+tempfile = "3.27.0"
+walkdir = "2.5.0"

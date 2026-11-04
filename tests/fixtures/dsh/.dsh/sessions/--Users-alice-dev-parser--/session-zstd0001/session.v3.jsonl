@@ -1,0 +1,2 @@
+{"type": "session", "version": 3, "id": "session-zstd0001", "createdAt": 1793088000000, "cwd": "/Users/alice/dev/parser", "isSeeded": false, "delegationDepth": 0}
+{"type": "user/message", "seq": 0, "time": 1, "data": {"content": [{"type": "text", "text": "STALE_GENERATION_TEXT"}], "source": {"kind": "user"}, "role": "user"}}
