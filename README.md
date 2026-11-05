@@ -102,6 +102,21 @@ Every query refreshes the index incrementally first (a stat per file; ~0.2 s on 
 
 ### Let your agents use it
 
+**Easiest: ask your agent.** Send it this message:
+
+> Install https://github.com/yongvae/agentstory and use it to search my past conversations with all my coding agents.
+
+The agent installs the binary and copies [`skills/agentstory/`](skills/agentstory/SKILL.md) into its skills directory. To do it by hand:
+
+```sh
+brew install yongvae/tap/agentstory
+git clone --depth 1 https://github.com/yongvae/agentstory /tmp/agentstory
+cp -r /tmp/agentstory/skills/agentstory ~/.claude/skills/    # Claude Code
+# or, for another agent that reads Agent Skills, its skills directory, e.g. ~/.agents/skills/
+```
+
+No separate indexing step is needed: the first command builds the index. The skill tells the agent when to search, how to read a hit, and to check a handoff card before continuing someone else's work. Agents without skill support can use the MCP server or an `AGENTS.md` line instead.
+
 **MCP** (Claude Code, Codex, Cursor, Gemini CLI, OpenCode, Hermes, …):
 
 ```sh

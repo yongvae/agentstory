@@ -154,7 +154,20 @@ brew install yongvae/tap/agentstory
 
 会装上两个命令：`agentstory` 和短别名 `ags`。macOS（Apple 芯片、Intel）和 Linux（x86_64、arm64）的预编译包在 [Releases 页面](https://github.com/yongvae/agentstory/releases)。
 
-让 Agent 自己调用：`claude mcp add agentstory -- ags mcp`（Codex、Cursor、Gemini 等配置方法相同），或者在 AGENTS.md 里写一句「问到过去的事，先 `ags search` 再回答」。
+**让 Agent 自己用，最简单的办法是直接跟它说**：
+
+> 帮我安装 https://github.com/yongvae/agentstory ，用来搜索我的多 Agent 历史对话
+
+Agent 会装好程序，并把仓库里的 [`skills/agentstory/`](skills/agentstory/SKILL.md) 复制进自己的 skills 目录。不用单独建索引，第一次运行任何命令都会自动建。这个 skill 告诉 Agent 什么时候该先搜、怎么读命中的那段对话、接手别人的会话前先看交接单。手动安装：
+
+```sh
+brew install yongvae/tap/agentstory
+git clone --depth 1 https://github.com/yongvae/agentstory /tmp/agentstory
+cp -r /tmp/agentstory/skills/agentstory ~/.claude/skills/    # Claude Code
+# 其他支持 Agent Skills 的 Agent，换成它的 skills 目录，比如 ~/.agents/skills/
+```
+
+不支持 skill 的 Agent，可以用 MCP（`claude mcp add agentstory -- ags mcp`，Codex、Cursor、Gemini 等配置方法相同），或者在 AGENTS.md 里写一句「问到过去的事，先 `ags search` 再回答」。
 
 ## 常用命令速查
 
